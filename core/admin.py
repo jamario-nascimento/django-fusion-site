@@ -19,4 +19,4 @@ class FuncionarioAdmin(admin.ModelAdmin):
 
 @admin.register(Feature)
 class FeatureAdmin(admin.ModelAdmin):
-    list_display = ('featture', 'icone', 'ativo', 'modificado')
+    list_display = ('feature', 'icone_feature', 'ativo', 'modificado')
