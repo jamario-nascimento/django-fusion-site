@@ -27,10 +27,15 @@ class Servico(Base):
         ('lni-layers', 'Design'),
         ('lni-mobile', 'Mobile'),
         ('lni-rocket', 'Foguete'),
+        ('lni-laptop-phone', 'devices'),
+        ('lni-leaf', 'folha'),
+        ('lni-package', 'caixa'),
+        ('lni-drop', 'gota'),
+        ('lni-star', 'estrela'),
     )
     servico = models.CharField('Serviço', max_length=100)
     descricao = models.TextField('Descrição', max_length=200)
-    icone = models.CharField('Icone', max_length=12, choices=ICONE_CHOICES)
+    icone = models.CharField('Icone', max_length=16, choices=ICONE_CHOICES)
 
     class Meta:
         verbose_name = 'Serviço'
@@ -68,4 +73,28 @@ class Funcionario(Base):
         return self.nome
 
 
+class Feature(Base):
+    ICONE_CHOICES2 = (
+        ('lni-cog', 'Engrenagem'),
+        ('lni-stats-up', 'Gráfico'),
+        ('lni-users', 'Usuários'),
+        ('lni-layers', 'Design'),
+        ('lni-mobile', 'Mobile'),
+        ('lni-rocket', 'Foguete'),
+        ('lni-laptop-phone', 'devices'),
+        ('lni-leaf', 'folha'),
+        ('lni-package', 'caixa'),
+        ('lni-drop', 'gota'),
+        ('lni-star', 'estrela'),
 
+    )
+    feature = models.CharField('Feature', max_length=100)
+    descricao_feature = models.TextField('Descrição', max_length=200)
+    icone_feature = models.CharField('Icone', max_length=16, choices=ICONE_CHOICES2)
+
+    class Meta:
+        verbose_name = 'Feature'
+        verbose_name_plural = 'Features'
+
+    def __str__(self):
+        return self.feature
