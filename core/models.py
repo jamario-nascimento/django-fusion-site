@@ -1,5 +1,6 @@
 import uuid
 from django.db import models
+from django.db.models import IntegerField
 
 from stdimage.models import StdImageField
 
@@ -98,3 +99,39 @@ class Feature(Base):
 
     def __str__(self):
         return self.feature
+
+
+class Expense(Base):
+    ICONE_CHOICES3 = (
+        ('lni-cog', 'Engrenagem'),
+        ('lni-stats-up', 'Gráfico'),
+        ('lni-users', 'Usuários'),
+        ('lni-layers', 'Design'),
+        ('lni-mobile', 'Mobile'),
+        ('lni-rocket', 'Foguete'),
+        ('lni-laptop-phone', 'devices'),
+        ('lni-leaf', 'folha'),
+        ('lni-package', 'caixa'),
+        ('lni-drop', 'gota'),
+        ('lni-star', 'estrela'),
+    )
+    CATEGORY_CHOICES = (
+        ('combustivel', 'Combustível'),
+        ('mecanica', 'Mecânica'),
+        ('alimentacao', 'Alimentação'),
+        ('devocional', 'Devocional'),
+        ('recreacao', 'Recreação'),
+    )
+    expense = models.CharField('Expense', max_length=100)
+    description = models.TextField('Descrição', max_length=200)
+    icone = models.CharField('Icone', max_length=16, choices=ICONE_CHOICES3)
+    date = models.DateTimeField(auto_now=True)
+    value = models.FloatField('Valor')
+    category = models.CharField('Categoria', max_length=16, choices=CATEGORY_CHOICES)
+    quantity = models.IntegerField('Quantidade')
+    class Meta:
+        verbose_name = 'Expense'
+        verbose_name_plural = 'Expenses'
+
+    def __str__(self):
+        return self.expense

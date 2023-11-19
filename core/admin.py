@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Cargo, Servico, Funcionario, Feature
+from .models import Cargo, Servico, Funcionario, Feature, Expense
 
 
 @admin.register(Cargo)
@@ -20,3 +20,7 @@ class FuncionarioAdmin(admin.ModelAdmin):
 @admin.register(Feature)
 class FeatureAdmin(admin.ModelAdmin):
     list_display = ('feature', 'icone_feature', 'ativo', 'modificado')
+
+    @admin.register(Expense)
+    class FeatureAdmin(admin.ModelAdmin):
+        list_display = ('expense', 'value', 'date', 'ativo', 'modificado')
